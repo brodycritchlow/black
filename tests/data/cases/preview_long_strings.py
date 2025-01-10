@@ -1,4 +1,4 @@
-# flags: --preview
+# flags: --unstable
 x = "This is a really long string that can't possibly be expected to fit all together on one line. In fact it may even take up three or more lines... like four or five... but probably just three."
 
 x += "This is a really long string that can't possibly be expected to fit all together on one line. In fact it may even take up three or more lines... like four or five... but probably just three."
@@ -305,6 +305,29 @@ code = (
 # Test case of an outer string' parens enclose an inner string's parens.
 call(body=("%s %s" % ((",".join(items)), suffix)))
 
+log.info(f'Skipping: {desc["db_id"]=} {desc["ms_name"]} {money=} {dte=} {pos_share=} {desc["status"]=} {desc["exposure_max"]=}')
+
+log.info(f"Skipping: {desc['db_id']=} {desc['ms_name']} {money=} {dte=} {pos_share=} {desc['status']=} {desc['exposure_max']=}")
+
+log.info(f'Skipping: {desc["db_id"]} {foo("bar",x=123)} {"foo" != "bar"} {(x := "abc=")} {pos_share=} {desc["status"]} {desc["exposure_max"]}')
+
+log.info(f'Skipping: {desc["db_id"]} {desc["ms_name"]} {money=} {(x := "abc=")=} {pos_share=} {desc["status"]} {desc["exposure_max"]}')
+
+log.info(f'Skipping: {desc["db_id"]} {foo("bar",x=123)=} {money=} {dte=} {pos_share=} {desc["status"]} {desc["exposure_max"]}')
+
+log.info(f'Skipping: {foo("asdf")=} {desc["ms_name"]} {money=} {dte=} {pos_share=} {desc["status"]} {desc["exposure_max"]}')
+
+log.info(f'Skipping: {"a" == "b" == "c" == "d"} {desc["ms_name"]} {money=} {dte=} {pos_share=} {desc["status"]} {desc["exposure_max"]}')
+
+log.info(f'Skipping: {"a" == "b" == "c" == "d"=} {desc["ms_name"]} {money=} {dte=} {pos_share=} {desc["status"]} {desc["exposure_max"]}')
+
+log.info(f'Skipping: {  longer_longer_longer_longer_longer_longer_name   [ "db_id" ]      [ "another_key" ]   =  :  .3f }')
+
+log.info(f'''Skipping: {"a" == 'b'} {desc["ms_name"]} {money=} {dte=} {pos_share=} {desc["status"]} {desc["exposure_max"]}''')
+
+log.info(f'''Skipping: {'a' == "b"=} {desc["ms_name"]} {money=} {dte=} {pos_share=} {desc["status"]} {desc["exposure_max"]}''')
+
+log.info(f"""Skipping: {'a' == 'b'} {desc['ms_name']} {money=} {dte=} {pos_share=} {desc['status']} {desc['exposure_max']}""")
 
 # output
 
@@ -846,3 +869,60 @@ code = (
 
 # Test case of an outer string' parens enclose an inner string's parens.
 call(body="%s %s" % (",".join(items), suffix))
+
+log.info(
+    "Skipping:"
+    f' {desc["db_id"]=} {desc["ms_name"]} {money=} {dte=} {pos_share=} {desc["status"]=} {desc["exposure_max"]=}'
+)
+
+log.info(
+    "Skipping:"
+    f" {desc['db_id']=} {desc['ms_name']} {money=} {dte=} {pos_share=} {desc['status']=} {desc['exposure_max']=}"
+)
+
+log.info(
+    "Skipping:"
+    f' {desc["db_id"]} {foo("bar",x=123)} {"foo" != "bar"} {(x := "abc=")} {pos_share=} {desc["status"]} {desc["exposure_max"]}'
+)
+
+log.info(
+    "Skipping:"
+    f' {desc["db_id"]} {desc["ms_name"]} {money=} {(x := "abc=")=} {pos_share=} {desc["status"]} {desc["exposure_max"]}'
+)
+
+log.info(
+    "Skipping:"
+    f' {desc["db_id"]} {foo("bar",x=123)=} {money=} {dte=} {pos_share=} {desc["status"]} {desc["exposure_max"]}'
+)
+
+log.info(
+    "Skipping:"
+    f' {foo("asdf")=} {desc["ms_name"]} {money=} {dte=} {pos_share=} {desc["status"]} {desc["exposure_max"]}'
+)
+
+log.info(
+    "Skipping:"
+    f' {"a" == "b" == "c" == "d"} {desc["ms_name"]} {money=} {dte=} {pos_share=} {desc["status"]} {desc["exposure_max"]}'
+)
+
+log.info(
+    "Skipping:"
+    f' {"a" == "b" == "c" == "d"=} {desc["ms_name"]} {money=} {dte=} {pos_share=} {desc["status"]} {desc["exposure_max"]}'
+)
+
+log.info(
+    "Skipping:"
+    f' {  longer_longer_longer_longer_longer_longer_name   [ "db_id" ]      [ "another_key" ]   =  :  .3f }'
+)
+
+log.info(
+    f"""Skipping: {"a" == 'b'} {desc["ms_name"]} {money=} {dte=} {pos_share=} {desc["status"]} {desc["exposure_max"]}"""
+)
+
+log.info(
+    f"""Skipping: {'a' == "b"=} {desc["ms_name"]} {money=} {dte=} {pos_share=} {desc["status"]} {desc["exposure_max"]}"""
+)
+
+log.info(
+    f"""Skipping: {'a' == 'b'} {desc['ms_name']} {money=} {dte=} {pos_share=} {desc['status']} {desc['exposure_max']}"""
+)
