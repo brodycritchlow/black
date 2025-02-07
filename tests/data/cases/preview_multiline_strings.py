@@ -1,4 +1,4 @@
-# flags: --preview
+# flags: --unstable
 """cow
 say""",
 call(3, "dogsay", textwrap.dedent("""dove
@@ -174,6 +174,13 @@ this_will_also_become_one_line = (  # comment
     "b"
     "c"
 )
+
+assert some_var == expected_result, """
+test
+"""
+assert some_var == expected_result, f"""
+expected: {expected_result}
+actual: {some_var}"""
 
 # output
 """cow
@@ -385,3 +392,10 @@ this_will_stay_on_three_lines = (
 )
 
 this_will_also_become_one_line = "abc"  # comment
+
+assert some_var == expected_result, """
+test
+"""
+assert some_var == expected_result, f"""
+expected: {expected_result}
+actual: {some_var}"""
